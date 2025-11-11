@@ -36,10 +36,7 @@ if(count($userinfo)!=0){
 <div class="container-fluid"> 
 
  <?php
-    // 1. Obtener el rol, usando '' si la sesión no lo tiene.
     $user_role = $_SESSION['role'] ?? '';
-
-    // 2. Determinar qué menú mostrar con la lógica clara.
     if ($user_role === ''){
       include_once "topmenu.php";
     }else{

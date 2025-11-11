@@ -17,18 +17,12 @@ require_once './fn-php/fn-roles.php'
     <body>
     <div class="container-fluid">
         <?php
-        // 1. Obtener el rol, usando '' si la sesión no lo tiene.
         $user_role = $_SESSION['role'] ?? '';
-
-        // 2. Determinar qué menú mostrar con la lógica clara.
         if (isGranted($user_role, 'index')) {
-            // Si tiene permiso (ej. es 'admin'), muestra el menú de administrador
             include_once "topmenuadmi.php";
         } elseif ($user_role === '') {
-            // Si NO tiene permiso Y el rol está vacío, muestra el menú de invitado/público
             include_once "topmenu.php";
         } else {
-            // Para cualquier otro caso donde NO tiene permiso (ej. rol 'user' sin permiso), muestra el menú de usuario logueado
             include_once "topmenuloged.php";
         }
         ?>
