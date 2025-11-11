@@ -5,13 +5,9 @@
 </div>
 <ul class="nav navbar-nav">
 <li><a href='index.php'>Home</a></li>
-<li><a href='daymenu.php'>Day Menu</a></li>
-<li><a href='viewmenus.php'>View Menus</a></li>
-<li><a href='adminmenus.php'>Admin Menus</a></li>
-<li><a href='adminusers.php'>Admin users</a></li>
 <li><a href='register.php'>Register</a></li>
 <li><a href='login.php'>Login</a></li>
-<li><a href='logout.php'>Logout</a></li>
+
 </ul>
 </div>
 <span class="userinfo">

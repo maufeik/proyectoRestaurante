@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once './fn-php/fn-users.php';
+require_once './fn-php/fn-roles.php';
 $message = "";
 if (filter_has_var(INPUT_POST, "registersubmit")) {
 
@@ -19,6 +21,7 @@ if(count($userinfo)!=0){
 
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -30,8 +33,21 @@ if(count($userinfo)!=0){
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container-fluid">
-  <?php include_once "topmenu.php";?>
+<div class="container-fluid"> 
+
+ <?php
+    // 1. Obtener el rol, usando '' si la sesión no lo tiene.
+    $user_role = $_SESSION['role'] ?? '';
+
+    // 2. Determinar qué menú mostrar con la lógica clara.
+    if ($user_role === ''){
+      include_once "topmenu.php";
+    }else{
+      header("Location:index.php");
+    }
+
+  ?>
+
   <h2>Registration form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <div class="form-group">

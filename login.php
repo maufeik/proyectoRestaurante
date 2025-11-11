@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (isset($_SESSION['role'])) {
+    header("Location: index.php");
+    exit(); 
+}
 require_once './fn-php/fn-users.php';
 $message = "";
 if (filter_has_var(INPUT_POST, "loginsubmit")) {
@@ -10,8 +15,6 @@ if (filter_has_var(INPUT_POST, "loginsubmit")) {
     if (count($userinfo)!=0) {  //user found
         //check password
         if ($userinfo[1] === $password) {
-        //start session
-        session_start();
         //save data in session
         $_SESSION['role'] = $userinfo[2];
         $_SESSION['name'] = $userinfo[3];
@@ -38,6 +41,7 @@ if (filter_has_var(INPUT_POST, "loginsubmit")) {
 </head>
 <body>
 <div class="container-fluid">
+
    <?php include_once "topmenu.php";?>
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
