@@ -46,7 +46,7 @@ if (filter_has_var(INPUT_POST, "loginsubmit")) {
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <div class="form-group">
-      <label for="username">Email:</label>
+      <label for="username">Username:</label>
       <input type="username" class="form-control" id="username" placeholder="Enter username" name="username" value="<?php echo $username ?? ""; ?>">
     </div>
     <div class="form-group">

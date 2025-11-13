@@ -1,1 +1,21 @@
 id;category;name;price
+1;appetiser;Patatas bravas con alioli;6.50
+2;appetiser;Tabla de quesos y embutidos;12.00
+3;firstcourse;Sopa de marisco;9.80
+4;firstcourse;Ensalada César;8.50
+5;maincourse;Paella de verduras;15.90
+6;maincourse;Bacalao a la vizcaína;18.75
+7;dessert;Mousse de chocolate;5.20
+8;dessert;Flan casero;4.90
+9;drink;Cerveza artesanal;3.50
+10;drink;Limonada natural;2.90
+11;appetiser;Ensaladilla Rusa;5.80
+12;appetiser;Hummus con pan de pita;6.90
+13;firstcourse;Sopa de Cebolla ;7.50
+14;firstcourse;Gazpacho Andaluz;5.00
+15;maincourse;Lasaña de Carne ;13.90
+16;maincourse;Pad Thai de Pollo ;14.50
+17;dessert;Tiramisú Clásico;6.10
+18;dessert;Brownie de chocolate con helado;5.50
+19;drink;Tinto de Verano;3.20
+20;drink;Café con leche;2.00

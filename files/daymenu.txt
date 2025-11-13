@@ -1,1 +1,11 @@
 id;category;name
+1;appetiser;Patatas bravas con alioli
+2;appetiser;Tabla de quesos y embutidos
+3;firstcourse;Sopa de marisco
+4;firstcourse;Ensalada César
+5;maincourse;Paella de verduras
+6;maincourse;Bacalao a la vizcaína
+7;dessert;Mousse de chocolate
+8;dessert;Flan casero
+9;drink;Cerveza artesanal
+10;drink;Limonada natural

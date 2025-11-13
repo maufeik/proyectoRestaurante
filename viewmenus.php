@@ -1,30 +1,100 @@
 <?php
 session_start();
-require_once './fn-php/fn-roles.php'
+require_once './fn-php/fn-roles.php';
+
+// --- LÓGICA PARA LEER Y PROCESAR EL MENÚ (CON PRECIO) ---
+
+/**
+ * Lee y procesa el archivo del menú completo.
+ * Asume el formato: id;category;name;price
+ * @param string $filepath La ruta al archivo del menú.
+ * @return array Un array asociativo donde la clave es la categoría y el valor es un array de ítems (nombre y precio).
+ */
+function getFullMenu(string $filepath): array {
+    $menu = [];
+    if (!file_exists($filepath)) {
+        return $menu;
+    }
+    
+    $lines = file($filepath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    if ($lines === false || count($lines) < 2) {
+        return $menu;
+    }
+
+    // El primer elemento es el encabezado, lo ignoramos
+    $dataLines = array_slice($lines, 1);
+
+    foreach ($dataLines as $line) {
+        $parts = explode(';', $line);
+        // Esperamos exactamente 4 partes: id, category, name, price
+        if (count($parts) === 4) {
+            $category = trim($parts[1]);
+            $name = trim($parts[2]);
+            $price = trim($parts[3]);
+
+            if (!isset($menu[$category])) {
+                $menu[$category] = [];
+            }
+            // Añade el plato (nombre y precio) a su categoría
+            $menu[$category][] = [
+                'name' => $name,
+                'price' => $price
+            ];
+        }
+    }
+    return $menu;
+}
+
+// Obtiene el menú completo procesado
+$fullMenu = getFullMenu('files/menu.txt');
+$categories = [
+    'appetiser' => 'Aperitivos',
+    'firstcourse' => 'Primeros Platos',
+    'maincourse' => 'Platos Principales',
+    'dessert' => 'Postres',
+    'drink' => 'Bebidas'
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <title>DAWBI-M07-Pt11</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/main.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="container-fluid">
-        <?php if (isGranted($_SESSION['role']??'', 'viewmenus')): include_once "topmenuadmi.php";?> 
-        <?php else: include_once "topmenuloged.php"; ?> 
+    <head>
+        <title>DAWBI-M07-Pt11</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <div class="container-fluid">
+        <?php if (isGranted($_SESSION['role']??'', 'viewmenus')): include_once "topmenuadmi.php";?> 
+        <?php else: include_once "topmenuloged.php"; ?> 
+        <?php endif; ?>
+        <div class="container">
+        <h2>Menú Completo</h2>
+        
+        <?php if (!empty($fullMenu)): ?>
+            <?php foreach ($categories as $key => $title): ?>
+                <?php if (isset($fullMenu[$key])): // Verifica si hay platos para esta categoría ?>
+                    <h3><?php echo $title; ?></h3>
+                    <ul class="list-group">
+                        <?php foreach ($fullMenu[$key] as $item): ?>
+                            <li class="list-group-item">
+                                <span class="pull-right badge"><?php echo number_format((float)$item['price'], 2, ',', '.') . ' €'; ?></span>
+                                <?php echo htmlspecialchars($item['name']); ?>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p class="alert alert-warning">No hay elementos disponibles en el menú completo (menu.txt).</p>
         <?php endif; ?>
-        <div class="container">
-        <h2>View menus</h2>
-<p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-</p>
-        </div>
-        <?php include_once "footer.php";?>
-    </div>
-    </body>
+        </div>
+        <?php include_once "footer.php";?>
+    </div>
+    </body>
 </html>
