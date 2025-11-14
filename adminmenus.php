@@ -15,9 +15,7 @@ require_once './fn-php/fn-roles.php';
     </head>
     <body>
     <div class="container-fluid">
-        <?php if (isGranted($_SESSION['role']??'', 'adminmenus')): include_once "topmenuadmi.php";?> 
-        <?php else: header("Location: index.php"); ?> 
-        <?php endif; ?>
+        <?php include 'navbar.php'?>
         
         <div class="container">
         <h2>Admin menus</h2>

@@ -16,7 +16,7 @@ if(count($userinfo)!=0){
    $message = "Existing user";
 }else{
   insertUser($username,$password,'Registered',$name, $surname);
-  header("Location: index.php");
+  $message = "User created successfully";
 }
 
 }
@@ -35,17 +35,10 @@ if(count($userinfo)!=0){
 <body>
 <div class="container-fluid"> 
 
- <?php
-    $user_role = $_SESSION['role'] ?? '';
-    if ($user_role === ''){
-      include_once "topmenu.php";
-    }else{
-      header("Location:index.php");
-    }
-
-  ?>
+ <?php include 'navbar.php' ;?>
 
   <h2>Registration form</h2>
+    <p class="error"><?php echo $message ?? ""; ?></p>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <div class="form-group">
       <label for="username">Username:</label>
@@ -65,8 +58,9 @@ if(count($userinfo)!=0){
     </div>
     <button type="submit" name="registersubmit" class="btn btn-default">Submit</button>
   </form>
+
   <?php include_once "footer.php";?>
 </div>
-  <p class="error"><?php echo $message ?? ""; ?></p>
+
 </body>
 </html>

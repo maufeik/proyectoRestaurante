@@ -8,3 +8,7 @@ user6;pass6;registered;name6;surname6
 user7;pass7;registered;name7;surname7
 mau;123456;Registered;mau;mau
 ian;canigo20;Registered;ian;cazalilla
+abra;123456;Registered;mau;mau
+ola;123456;Registered;ola;ola
+popo;123456;Registered;9898;98998
+ekisdeee;123456;Registered;;

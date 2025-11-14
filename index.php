@@ -16,16 +16,7 @@ require_once './fn-php/fn-roles.php'
     </head>
     <body>
     <div class="container-fluid">
-        <?php
-        $user_role = $_SESSION['role'] ?? '';
-        if (isGranted($user_role, 'index')) {
-            include_once "topmenuadmi.php";
-        } elseif ($user_role === '') {
-            include_once "topmenu.php";
-        } else {
-            include_once "topmenuloged.php";
-        }
-        ?>
+        <?php include 'navbar.php' ?>
         <div class="container">
         <h2>Restaurant application</h2>
 <p>

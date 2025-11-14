@@ -42,7 +42,7 @@ if (filter_has_var(INPUT_POST, "loginsubmit")) {
 <body>
 <div class="container-fluid">
 
-   <?php include_once "topmenu.php";?>
+   <?php include 'navbar.php';?>
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <div class="form-group">

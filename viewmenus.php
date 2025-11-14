@@ -70,9 +70,7 @@ $categories = [
     </head>
     <body>
     <div class="container-fluid">
-        <?php if (isGranted($_SESSION['role']??'', 'viewmenus')): include_once "topmenuadmi.php";?> 
-        <?php else: include_once "topmenuloged.php"; ?> 
-        <?php endif; ?>
+        <?php include 'navbar.php'?>
         <div class="container">
         <h2>Menú Completo</h2>
         
