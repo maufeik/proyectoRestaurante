@@ -1,3 +1,4 @@
+/* Topbar styles */
 #topbar ul {
     background-color: antiquewhite;
     width: auto;
@@ -15,7 +16,50 @@
     background-color: burlywood;
     color: whitesmoke;
 }
-div.footer {
-    background-color: antiquewhite;;
-    color: blueviolet;
+
+.footer {
+    background-color: #1f2937; 
+    color: #cbd5e1; 
+    padding: 28px 16px;
+    font-size: 14px;
+    border-top: 4px solid rgba(255,255,255,0.03);
+}
+.footer .footer-inner {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footer .footer-col {
+    flex: 1 1 200px;
+    min-width: 180px;
+}
+.footer .footer-col strong {
+    color: #ffffff;
+    font-size: 15px;
+}
+.footer .muted {
+    color: #94a3b8;
+}
+
+.footer .footer-bottom {
+    margin-top: 12px;
+    text-align: center;
+    color: #7b8794;
+    font-size: 13px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .footer .footer-inner {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    .footer {
+        text-align: center;
+    }
+    .footer .footer-col {
+        min-width: 100%;
+    }
 }

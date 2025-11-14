@@ -46,11 +46,11 @@ function getDayMenu(string $filepath): array {
 // Obtiene el menú procesado
 $dayMenu = getDayMenu('files/daymenu.txt');
 $categories = [
-    'appetiser' => 'Aperitivos',
-    'firstcourse' => 'Primeros Platos',
-    'maincourse' => 'Platos Principales',
-    'dessert' => 'Postres',
-    'drink' => 'Bebidas'
+    'appetiser' => 'Appetiser',
+    'firstcourse' => 'Firstcourse',
+    'maincourse' => 'Maincourse',
+    'dessert' => 'Dessert',
+    'drink' => 'Drink'
 ];
 
 ?>
