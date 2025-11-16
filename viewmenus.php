@@ -1,12 +1,7 @@
 <?php
 session_start();
 require_once './fn-php/fn-roles.php';
-
-// --- LÓGICA PARA LEER Y PROCESAR EL MENÚ (CON PRECIO) ---
-
 /**
- * Lee y procesa el archivo del menú completo.
- * Asume el formato: id;category;name;price
  * @param string $filepath La ruta al archivo del menú.
  * @return array Un array asociativo donde la clave es la categoría y el valor es un array de ítems (nombre y precio).
  */
@@ -22,12 +17,12 @@ function getFullMenu(string $filepath): array {
         return $menu;
     }
 
-    // El primer elemento es el encabezado, lo ignoramos
+
     $dataLines = array_slice($lines, 1);
 
     foreach ($dataLines as $line) {
         $parts = explode(';', $line);
-        // Esperamos exactamente 4 partes: id, category, name, price
+ 
         if (count($parts) === 4) {
             $category = trim($parts[1]);
             $name = trim($parts[2]);
@@ -36,7 +31,7 @@ function getFullMenu(string $filepath): array {
             if (!isset($menu[$category])) {
                 $menu[$category] = [];
             }
-            // Añade el plato (nombre y precio) a su categoría
+    
             $menu[$category][] = [
                 'name' => $name,
                 'price' => $price
@@ -46,14 +41,14 @@ function getFullMenu(string $filepath): array {
     return $menu;
 }
 
-// Obtiene el menú completo procesado
+
 $fullMenu = getFullMenu('files/menu.txt');
 $categories = [
-    'appetiser' => 'appetiser',
-    'firstcourse' => 'firstcourse',
-    'maincourse' => 'maincourse',
-    'dessert' => 'dessert',
-    'drink' => 'drink'
+    'appetiser' => 'Appetiser',
+    'firstcourse' => 'Firstcourse',
+    'maincourse' => 'Maincourse',
+    'dessert' => 'Dessert',
+    'drink' => 'Drink'
 ];
 
 ?>

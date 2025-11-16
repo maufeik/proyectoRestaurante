@@ -3,8 +3,6 @@ session_start();
 require_once './fn-php/fn-roles.php';
 
 /**
- * Lee y procesa el archivo del menú diario.
- * Asume el formato: id;category;name
  * @param string $filepath La ruta al archivo del menú.
  * @return array Un array asociativo donde la clave es la categoría y el valor es un array de nombres de ítems.
  */
@@ -50,7 +48,7 @@ $categories = [
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>DAWBI-M07-Pt11</title>
+  <title>DAWBI-M07-Pt11</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/main.css" rel="stylesheet">

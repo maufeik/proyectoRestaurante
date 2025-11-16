@@ -1,67 +1,32 @@
-/* Topbar styles */
-.image-slider {
+
+.image-slider.auto {
     width: 100%;
     max-width: 750px;
     margin: 30px auto;
     overflow: hidden;
     position: relative;
-}
-
-.slider-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.slider-container img {
-    width: 750px;
-    height: auto;
     border-radius: 10px;
+}
+
+.slider-auto {
+    display: flex;
+    width: 200%; 
+    animation: slideAuto 8s infinite;
+}
+
+.slider-auto img {
+    width: 100%;
+    height: 450px;
     object-fit: cover;
 }
 
-/* Botones de navegación */
-.slider-controls {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transform: translateY(-50%);
-    padding: 0 10px;
-    box-sizing: border-box;
-}
 
-.slider-btn {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 24px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-decoration: none;
-    display: inline-block;
-    transition: background-color 0.3s;
-}
-
-.slider-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    text-decoration: none;
-    color: white;
-}
-
-/* Indicadores de diapositivas */
-.slider-indicators {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-}
+@keyframes slideAuto {
+    0% { transform: translateX(0); }
+    40% { transform: translateX(0); }
+    50% { transform: translateX(-50%); }
+    90% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }}
 
 .indicator {
     width: 12px;
