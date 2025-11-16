@@ -1,4 +1,102 @@
 /* Topbar styles */
+.image-slider {
+    width: 100%;
+    max-width: 750px;
+    margin: 30px auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider-container img {
+    width: 750px;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Botones de navegación */
+.slider-controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.slider-btn {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.slider-btn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    color: white;
+}
+
+/* Indicadores de diapositivas */
+.slider-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.indicator:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.indicator.active {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.slider-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 10px;
+}
+
+.slider-scroll img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    border-radius: 10px;
+    scroll-snap-align: center;
+}
 #topbar ul {
     background-color: antiquewhite;
     width: auto;

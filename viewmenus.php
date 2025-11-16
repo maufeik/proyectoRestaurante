@@ -49,11 +49,11 @@ function getFullMenu(string $filepath): array {
 // Obtiene el menú completo procesado
 $fullMenu = getFullMenu('files/menu.txt');
 $categories = [
-    'appetiser' => 'Aperitivos',
-    'firstcourse' => 'Primeros Platos',
-    'maincourse' => 'Platos Principales',
-    'dessert' => 'Postres',
-    'drink' => 'Bebidas'
+    'appetiser' => 'appetiser',
+    'firstcourse' => 'firstcourse',
+    'maincourse' => 'maincourse',
+    'dessert' => 'dessert',
+    'drink' => 'drink'
 ];
 
 ?>
@@ -72,7 +72,7 @@ $categories = [
     <div class="container-fluid">
         <?php include 'navbar.php'?>
         <div class="container">
-        <h2>Menú Completo</h2>
+        <h2>Full Menu</h2>
         
         <?php if (!empty($fullMenu)): ?>
             <?php foreach ($categories as $key => $title): ?>
