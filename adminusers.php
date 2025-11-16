@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once './fn-php/fn-roles.php';
+if (!isGranted($_SESSION['role'] ?? '', 'adminusers')) {
+    header("Location: index.php");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -15,7 +19,7 @@ require_once './fn-php/fn-roles.php';
     </head>
     <body>
     <div class="container-fluid">
-        <?php include 'navbar.php' ?>
+        <?php include 'includes/navbar.php' ?>
         <div class="container">
         <h2>Admin users</h2>
         <?php if (isGranted($_SESSION['role']??'', 'adminusers')): ?> 
@@ -26,7 +30,7 @@ require_once './fn-php/fn-roles.php';
 <p>You are not allowed to acces this page!</p>
        <?php endif; ?>
         </div>
-        <?php include_once "footer.php";?>
+        <?php include_once "includes/footer.php";?>
     </div>
     </body>
 </html>

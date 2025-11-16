@@ -2,6 +2,10 @@
 session_start();
 require_once './fn-php/fn-users.php';
 require_once './fn-php/fn-roles.php';
+if (isset($_SESSION['role'])) {
+    header("Location: index.php");
+    exit(); 
+}
 $message = "";
 if (filter_has_var(INPUT_POST, "registersubmit")) {
 
@@ -35,7 +39,7 @@ if(count($userinfo)!=0){
 <body>
 <div class="container-fluid"> 
 
- <?php include 'navbar.php' ;?>
+ <?php include 'includes/navbar.php' ;?>
 
   <h2>Registration form</h2>
     <p class="error"><?php echo $message ?? ""; ?></p>
@@ -59,7 +63,7 @@ if(count($userinfo)!=0){
     <button type="submit" name="registersubmit" class="btn btn-default">Submit</button>
   </form>
 
-  <?php include_once "footer.php";?>
+  <?php include_once "includes/footer.php";?>
 </div>
 
 </body>

@@ -1,6 +1,10 @@
 <?php
 session_start();
 require_once './fn-php/fn-roles.php';
+if (!isGranted($_SESSION['role'] ?? '', 'daymenu')) {
+    header("Location: index.php");
+    exit();
+}
 
 /**
  * @param string $filepath La ruta al archivo del menú.
@@ -47,39 +51,39 @@ $categories = [
 ?>
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-  <title>DAWBI-M07-Pt11</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="css/main.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-    <div class="container-fluid">
-        <?php include 'navbar.php'?>
-        <div class="container">
-        <h2>Day Menu</h2>
+     <head>
+        <title>DAWBI-M07-Pt11</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/main.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <?php include 'includes/navbar.php'?>
+            <div class="container">
+                <h2>Day Menu</h2>
 
-        <?php if (!empty($dayMenu)): ?>
-            <?php foreach ($categories as $key => $title): ?>
-                <?php if (isset($dayMenu[$key])):?>
-                    <h3><?php echo $title; ?></h3>
-                    <ul class="list-group">
-                        <?php foreach ($dayMenu[$key] as $name): ?>
-                            <li class="list-group-item">
-                                <?php echo htmlspecialchars($name); ?>
-                            </li>
-                        <?php endforeach; ?>
-                    </ul>
+                <?php if (!empty($dayMenu)): ?>
+                    <?php foreach ($categories as $key => $title): ?>
+                        <?php if (isset($dayMenu[$key])):?>
+                            <h3><?php echo $title; ?></h3>
+                            <ul class="list-group">
+                                <?php foreach ($dayMenu[$key] as $name): ?>
+                                    <li class="list-group-item">
+                                        <?php echo htmlspecialchars($name); ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            </ul>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="alert alert-warning">No hay elementos disponibles en el menú diario.</p>
                 <?php endif; ?>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <p class="alert alert-warning">No hay elementos disponibles en el menú diario.</p>
-        <?php endif; ?>
-        </div>
-        <?php include_once "footer.php";?>
-    </div>
-    </body>
+            </div>
+            <?php include_once "includes/footer.php";?>
+        </div>
+    </body>
 </html>
