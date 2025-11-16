@@ -42,7 +42,7 @@ if (filter_has_var(INPUT_POST, "loginsubmit")) {
 <body>
 <div class="container-fluid">
 
-   <?php include 'navbar.php';?>
+   <?php include 'includes/navbar.php';?>
   <h2>Login form</h2>
   <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
     <div class="form-group">
@@ -58,7 +58,7 @@ if (filter_has_var(INPUT_POST, "loginsubmit")) {
     </div>
     <button type="submit" name="loginsubmit" class="btn btn-default">Submit</button>
   </form>
-  <?php include_once "footer.php";?>
+  <?php include_once "includes/footer.php";?>
 </div>
     <p class="error"><?php echo $message ?? ""; ?></p>
 </body>

@@ -16,7 +16,7 @@ require_once './fn-php/fn-roles.php'
     </head>
     <body>
     <div class="container-fluid">
-        <?php include 'navbar.php' ?>
+        <?php include 'includes/navbar.php' ?>
         <div class="container">
         <h2>Restaurant application</h2>
 <p>
@@ -68,6 +68,6 @@ require_once './fn-php/fn-roles.php'
         </div>
     </body>
     </div>
-        <?php include_once "footer.php";?>
+        <?php include_once "includes/footer.php";?>
     </div>
 </html>
